@@ -101,7 +101,6 @@ namespace FactoryPrj.Controllers
                 var shifts = ShiftBL.GetShifts();
                 var emp = empBL.GetEmployee(id);
                 ViewBag.emp = emp;
-
                 ViewBag.shifts = shifts;
                 return View("AddShiftToEmployee");
             }
@@ -111,52 +110,6 @@ namespace FactoryPrj.Controllers
             }
 
         }
-
-        //public ActionResult AddShiftToEmployee(int id)
-        //{
-        //    bool isActionAllowed = loginBL.IsCrossedLImitPerDay((string)Session["userName"]);
-
-        //    if (isActionAllowed == true && (bool)Session["authenticated"] == true)
-        //    {
-
-
-
-        //        var shifts = empBL.getAllEmpsWithDateAsString();
-
-
-        //        var emp = empBL.GetEmployee(id);
-        //        var empsh = emshifBL.getShiftsbyID(id);
-        //        ViewBag.emp = emp;
-        //        ViewBag.shifts = shifts;
-        //        return View("AddShiftToEmployee", empsh);
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("Index", "Login");
-        //    }
-
-        //}
-
-
-
-        //[HttpPost]
-        //public ActionResult GetAddedShiftToEmp(EmployeeShift empsh)
-        //{
-        //    bool isActionAllowed = loginBL.IsCrossedLImitPerDay((string)Session["userName"]);
-
-        //    if (isActionAllowed == true && (bool)Session["authenticated"] == true)
-        //    {
-
-        //        emshifBL.AddEmpToShift(empsh);
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("Index", "Login");
-        //    }
-
-        //}
 
         [HttpPost]
         public ActionResult GetAddedShiftToEmp(int empID, int shiftID)
