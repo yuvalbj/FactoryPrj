@@ -13,8 +13,6 @@ namespace FactoryPrj.Models
             return db.Departments.ToList();
         }
 
-        
-
         public Department GetDepartment(int id)
         {
             return db.Departments.Where(x => x.DepID == id).First();
@@ -25,7 +23,6 @@ namespace FactoryPrj.Models
             var depToChange = db.Departments.Where(x => x.DepID == dep.DepID).First();
             depToChange.DepName = dep.DepName;
             depToChange.DepManager = dep.DepManager;
-
             db.SaveChanges();
         }
         
@@ -40,8 +37,6 @@ namespace FactoryPrj.Models
             var depToDel = db.Departments.Where(x => x.DepID == id).First();
             db.Departments.Remove(depToDel);
             db.SaveChanges();
-
         }
-        
     }
 }

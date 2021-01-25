@@ -11,12 +11,10 @@ namespace FactoryPrj.Controllers
         DepartmentBL depBL = new DepartmentBL();
         LoginBL loginBL = new LoginBL();
         EmpBL empBL = new EmpBL();
-        
-        // GET: Department
+ 
         public ActionResult Index()
         {
             bool isActionAllowed = loginBL.IsCrossedLImitPerDay((string)Session["userName"]);
-
             if (isActionAllowed == true && (bool)Session["authenticated"] == true)
             {
                 var deps = depBL.GetDepartments();
@@ -28,32 +26,27 @@ namespace FactoryPrj.Controllers
             else
             {
                 return RedirectToAction("Index", "Login");
-            }
-           
+            }          
         }
 
         public ActionResult EditDep(int id)
         {
             bool isActionAllowed = loginBL.IsCrossedLImitPerDay((string)Session["userName"]);
-
             if (isActionAllowed == true && (bool)Session["authenticated"] == true)
             {
                 var dep = depBL.GetDepartment(id);
                 return View("EditDep", dep);
-
             }
             else
             {
                 return RedirectToAction("Index", "Login");
             }
-
         }
 
         [HttpPost]
         public ActionResult GetUpdatedDep(Department dep)
         {
             bool isActionAllowed = loginBL.IsCrossedLImitPerDay((string)Session["userName"]);
-
             if (isActionAllowed == true && (bool)Session["authenticated"] == true)
             {
                 depBL.UpdateDep(dep);
@@ -63,13 +56,11 @@ namespace FactoryPrj.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-
         }
      
         public ActionResult AddNewDep()
         {
             bool isActionAllowed = loginBL.IsCrossedLImitPerDay((string)Session["userName"]);
-
             if (isActionAllowed == true && (bool)Session["authenticated"] == true)
             {
                 return View("AddNewDep");
@@ -84,7 +75,6 @@ namespace FactoryPrj.Controllers
         public ActionResult GetNewDeps(Department dep)
         {
             bool isActionAllowed = loginBL.IsCrossedLImitPerDay((string)Session["userName"]);
-
             if (isActionAllowed == true && (bool)Session["authenticated"] == true) 
             {
                 depBL.AddDep(dep);
@@ -94,14 +84,11 @@ namespace FactoryPrj.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-
-
         }
 
         public ActionResult DeleteDep(int id)
         {
             bool isActionAllowed = loginBL.IsCrossedLImitPerDay((string)Session["userName"]);
-
             if (isActionAllowed == true && (bool)Session["authenticated"] == true)
             {
                 depBL.DeleteDep(id);
@@ -110,9 +97,7 @@ namespace FactoryPrj.Controllers
             else
             {
                 return RedirectToAction("Index", "Login");
-
             }
-
         }
     }
 }

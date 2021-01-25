@@ -11,7 +11,6 @@ namespace FactoryPrj.Controllers
     
     public class LoginController : Controller
     {
-        // GET: Login
         LoginBL loginBL = new LoginBL();
       
 
@@ -56,7 +55,6 @@ namespace FactoryPrj.Controllers
             }
             else
             {
-               // run out of credit
                 return View("Index");
             }
 
@@ -71,7 +69,6 @@ namespace FactoryPrj.Controllers
             }
             else
             {
-               // run out of credit
                 return View("Index");
             }
 
@@ -87,7 +84,6 @@ namespace FactoryPrj.Controllers
             }
             else
             {
-                // run out of credit
                 return View("Index");
             }
 

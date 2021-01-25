@@ -60,7 +60,6 @@ namespace FactoryPrj.Models
             empToChange.LastName = emp.LastName;
             empToChange.StartWorkYear = emp.StartWorkYear;
             empToChange.DepID = emp.DepID;
-
             db.SaveChanges();
         }
 
@@ -68,19 +67,12 @@ namespace FactoryPrj.Models
         {
             Employee emp = db.Employees.Where(x => x.EmpID == id).First();
             db.Employees.Remove(emp);
-
             var result = db.EmployeeShifts.Where(x => x.EmpID == id).ToList();
              foreach (var empshif in result)
             {
                 db.EmployeeShifts.Remove(empshif);
             }
-
             db.SaveChanges();
         }
-
-
-
-
     }
-
 }

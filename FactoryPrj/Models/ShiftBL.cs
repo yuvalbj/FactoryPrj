@@ -7,20 +7,18 @@ namespace FactoryPrj.Models
 {
     public class ShiftBL
     {
-
-        FactoryEntities1 db = new FactoryEntities1();
-
+       FactoryEntities1 db = new FactoryEntities1();
        public List<Shift> GetShifts()
         {
             return db.Shifts.ToList();
         }
 
-  
         public void AddShift(Shift s)
         {
             db.Shifts.Add(s);
             db.SaveChanges();
         }
+
         public object GetShiftsWithEmployees()
         {
             var result = from emp in db.Employees
@@ -34,11 +32,7 @@ namespace FactoryPrj.Models
                              EmpID = allShif.EmpID
                              
                          };
-
             return result.ToList();
         }
-
-  
-   
     }
 }

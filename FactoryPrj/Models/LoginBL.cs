@@ -32,8 +32,7 @@ namespace FactoryPrj.Models
         {
             var user = db.Users.Where(x => x.UserName == usrname).First();
             if (user.Date == DateTime.Today)
-            {
-                
+            {    
                 if (user.NumOfActions <= user.Credits)
                 {
                     user.NumOfActions++;
@@ -52,10 +51,7 @@ namespace FactoryPrj.Models
                 db.SaveChanges();
                 return true;
             }
-
         }
-
-
         public User getUser(string usrname)
         {
             return db.Users.Where(x => x.UserName == usrname).First();

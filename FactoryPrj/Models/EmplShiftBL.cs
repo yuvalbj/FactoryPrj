@@ -5,8 +5,6 @@ using System.Web;
 
 namespace FactoryPrj.Models
 {
- 
-
     public class EmplShiftBL
     {
         FactoryEntities1 db = new FactoryEntities1();
@@ -21,13 +19,6 @@ namespace FactoryPrj.Models
             return db.EmployeeShifts.Where(x => x.EmpID == id).First();
         }
 
-
-        //public void AddEmpToShift(EmployeeShift empshif)
-        //{
-        //    db.EmployeeShifts.Add(empshif);
-        //    db.SaveChanges();
-        //}
-
         public void AddEmpToShift(int shiftID, int empID)
         {
             EmployeeShift empshif = new EmployeeShift()
@@ -35,7 +26,6 @@ namespace FactoryPrj.Models
                 ShiftID = shiftID,
                 EmpID = empID
             };
-
             db.EmployeeShifts.Add(empshif);
             db.SaveChanges();
         }
