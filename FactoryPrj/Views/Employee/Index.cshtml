@@ -1,0 +1,105 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Employees</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h3 class="text-center">Employees Page For <em><b>@Session["usrFullName"]</b></em></h3>
+
+        <form action="/employee/SearchResult" method="post">
+            Serach employee by First name / last name / departemnt:<br /> <input type="search" name="str" /> <br />
+            <input type="submit" class="btn btn-secondary" value="Search" />
+        </form>
+    </div>
+    <div class="container">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Start Work Year</th>
+                    <th scope="col">Departemnt</th>
+                    <th scope="col">Shifts</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Add Shift</th>
+                    <th scope="col">Delete</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var emp in ViewBag.emps)
+                {
+
+                <tr>
+                    <td>@emp.EmpID</td>
+                    <td>@emp.FirstName</td>
+                    <td>@emp.LastName</td>
+                    <td>@emp.StartWorkYear</td>
+
+                    <td>
+                        @foreach (var dep in ViewBag.deps)
+                        {
+
+                            if (dep.DepID == emp.DepID)
+                            {
+                                @dep.DepName
+                            }
+                            else
+                            { }
+
+                        }
+                    </td>
+
+
+                    <td>
+                        <ul>
+                            @foreach (var item in ViewBag.shifts)
+                            {
+                                if (emp.EmpID == item.EmpID)
+                                {
+
+                                    <li>@item.DateAsString</li>
+
+                                }
+
+                            }
+                        </ul>
+                    </td>
+                    <td>@Html.ActionLink("Edit", "EditEmp", new { id = emp.EmpID, @class = "btn btn-secondary" })</td>
+
+                    <td>
+                        @Html.ActionLink("Add Shift", "AddShiftToEmployee", new { id = emp.EmpID, @class = "btn btn-info" })
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Delete", "DelteEmployee", new { id = emp.EmpID, @class = "btn btn-info" })
+                    </td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+     
+
+        <input type="button" class="btn btn-secondary btn-sm" value="Log Out" onclick="location.href='@Url.Action("Logout", "Login")'" />
+
+    </div>
+
+ 
+
+
+</body>
+</html>

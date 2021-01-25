@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Shift To Employee</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="container p-3">
+        <h3 class="text-center">Add Shift to Employee Page For <em><b>@Session["usrFullName"]</b></em></h3>
+    </div>
+    <div class="container">
+        <div class="offset-lg-4 ">
+
+            <h6>Employee Name:@ViewBag.emp.FirstName @ViewBag.emp.LastName</h6>
+
+            <form action="/Employee/GetAddedShiftToEmp" method="post">
+
+                <input type="number" name="empID" value=@ViewBag.emp.EmpID style="visibility: hidden;">
+
+                <br />
+
+                Shifts: <select name="shiftID">
+                     <option value=""></option>
+
+                    @foreach (var shift in ViewBag.shifts)
+                    {
+
+             <option value=@shift.ShiftID>@shift.Date  @shift.StartTime - @shift.EndTime </option>
+                    }
+                </select>
+
+                <br />
+
+                <input type="submit" class="btn btn-secondary" value="Add Shift to Employee" />
+            </form>
+
+            <br />
+            @Html.ActionLink("Back to List", "Index")<br />
+            <input type="button" class="btn btn-secondary btn-sm" value="Log Out" onclick="location.href='@Url.Action("Logout","Login")'" />
+        </div>
+
+    </div>
+
+</body>
+</html>
+

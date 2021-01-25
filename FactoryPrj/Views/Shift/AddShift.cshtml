@@ -1,0 +1,39 @@
+﻿@model FactoryPrj.Models.Shift
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Shift</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="container p-3">
+        <h3 class="text-center">Add New Shift Page For <em><b>@Session["usrFullName"]</b></em></h3>
+    </div>
+    <div class="container">
+        <div class="offset-lg-4 ">
+
+
+            <form action="/Shift/GetNewShifts" method="post">
+                Shift Date: @Html.DatePickerFor(m => m.Date) <br />
+                Start Time: @Html.TextBoxFor(m => m.StartTime, new { @class = "form-control  w-25" })<br />
+                End Time: @Html.TextBoxFor(m => m.EndTime, new { @class = "form-control  w-25" })<br />
+
+                <input type="submit" class="btn btn-secondary" value="Add New Shift" />
+            </form>
+            <br />
+            @Html.ActionLink("Back to List", "Index")<br />
+            <input type="button" class="btn btn-secondary btn-sm" value="Log Out" onclick="location.href='@Url.Action("Logout","Login")'" />
+        </div>
+
+    </div>
+
+</body>
+</html>

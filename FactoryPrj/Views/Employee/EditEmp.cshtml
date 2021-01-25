@@ -1,0 +1,44 @@
+﻿@model FactoryPrj.Models.Employee
+
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Department Info</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container p-3">
+        <h3 class="text-center">Edit Employee Page For <em><b>@Session["usrFullName"]</b></em></h3>
+
+        <div class="offset-lg-4 ">
+            <form action="/employee/GetUpdatedEmp" method="post">
+                ID: @Html.EditorFor(m => m.EmpID, new { @class = "form-control" })<br />
+                First Name: @Html.EditorFor(m => m.FirstName, new { @class = "form-control" })<br />
+                Last Name: @Html.EditorFor(m => m.LastName, new { @class = "form-control" })<br />
+                Start Work Year: @Html.EditorFor(m => m.StartWorkYear, new { @class = "form-control" })<br />
+                Departemnt :@Html.DropDownListFor(emp => emp.DepID, new SelectList(ViewBag.deps, "DepID", "DepName"),
+                     "Select Department", new { @class = "form-control" })
+
+                <input type="submit" class="btn btn-secondary" value="Save" />
+                <br />
+            </form>
+
+            <br /><br />
+            @Html.ActionLink("Back to List", "Index") <br />
+            <input type="button" class="btn btn-secondary btn-sm" value="Log Out" onclick="location.href='@Url.Action("Logout","Login")'" />
+
+        </div>
+    </div>
+</body>
+</html>

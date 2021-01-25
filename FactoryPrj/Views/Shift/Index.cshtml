@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Employees</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h3 class="text-center">Shiftst Page For <em><b>@Session["usrFullName"]</b></em></h3>
+
+        
+    </div>
+    <div class="container">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Shift Date</th>
+                    <th scope="col">Shift Hours</th>
+                    <th scope="col">Employees in Shift</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var shift in ViewBag.shifts)
+                {
+
+                    <tr>
+                        <td>@shift.ShiftID</td>
+                        <td>@shift.Date</td>
+                        <td>@shift.StartTime - @shift.EndTime</td>
+
+
+
+
+                        <td>
+                            <ul>
+                                @foreach (var emp in ViewBag.emps)
+                                {
+                                    if (emp.shiftID == shift.ShiftID)
+                                    {
+
+                                        <li>@Html.ActionLink((string)emp.empsInShift, "EditEmployee", new { id = (int)emp.EmpID })</li>
+
+                                    }
+
+                                }
+                            </ul>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <input type="button" class="btn btn-secondary" value="Add New Shift" onclick="location.href='@Url.Action("AddNewShift")'" /> <br /> <br />
+
+
+        <input type="button" class="btn btn-secondary btn-sm" value="Log Out" onclick="location.href='@Url.Action("Logout", "Login")'" />
+
+    </div>
+
+
+
+
+</body>
+</html>

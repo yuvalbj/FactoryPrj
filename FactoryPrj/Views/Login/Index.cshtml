@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Factory Management Login</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body class="bg-light">
+  
+    <div class="container p-3">
+
+        <div class="offset-lg-4 ">
+            <h3> Login to Factory Shift Managemnt Site </h3>
+            <form action="/Login/GetHomePage" class="align-content-center p-3" method="post">
+                User Name:<input type="text" class="form-control w-25" name="usrname" />
+                <br />
+
+                Password: <input type="password" class="form-control w-25" name="pwd" /> <br />
+
+                <input type="submit" class="btn btn-secondary" value="Login" />
+            </form>
+
+        </div>
+    </div>
+     
+
+</body>
+</html>
