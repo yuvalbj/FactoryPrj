@@ -15,9 +15,10 @@
 </head>
 <body>
     <div class="container">
+        <input type="button" class="btn btn-secondary btn-sm" value="Back To Home Page" onclick="location.href='@Url.Action("BackToHomePage", "Login")'" />
+
         <h3 class="text-center">Shiftst Page For <em><b>@Session["usrFullName"]</b></em></h3>
 
-        
     </div>
     <div class="container">
         <table class="table table-hover table-bordered">
@@ -39,25 +40,18 @@
                         <td>@shift.ShiftID</td>
                         <td>@shift.Date</td>
                         <td>@shift.StartTime - @shift.EndTime</td>
-
-
-
-
                         <td>
                             <ul>
                                 @foreach (var emp in ViewBag.emps)
                                 {
                                     if (emp.shiftID == shift.ShiftID)
                                     {
-
-                                        <li>@Html.ActionLink((string)emp.empsInShift, "EditEmployee", new { id = (int)emp.EmpID })</li>
-
+                                     <li>@Html.ActionLink((string)emp.empsInShift, "EditEmployee", new { id = (int)emp.EmpID })</li>
                                     }
 
                                 }
                             </ul>
                         </td>
-
                     </tr>
                 }
 

@@ -15,6 +15,8 @@
 </head>
 <body>
     <div class="container">
+        <input type="button" class="btn btn-secondary btn-sm" value="Back To Home Page" onclick="location.href='@Url.Action("BackToHomePage", "Login")'" />
+
         <h3 class="text-center">Employees Page For <em><b>@Session["usrFullName"]</b></em></h3>
 
         <form action="/employee/SearchResult" method="post">

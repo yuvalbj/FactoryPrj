@@ -12,8 +12,7 @@ namespace FactoryPrj.Controllers
     public class LoginController : Controller
     {
         LoginBL loginBL = new LoginBL();
-      
-
+ 
         public ActionResult Index()
         {
             return View();
@@ -29,8 +28,6 @@ namespace FactoryPrj.Controllers
                 Session["usrFullName"] = usr.FullName;
                 Session["userName"] = usr.UserName;
                 Session["authenticated"] = true;
-              
-
                 return View("HomePage");
             }
             else
@@ -38,17 +35,15 @@ namespace FactoryPrj.Controllers
                 return RedirectToAction("Index");
             }
         }
-
+   
         public ActionResult Logout()
-        {
-            
+        {  
             Session.Clear();
             return View("Index");
         }
         public ActionResult GotoDepartment()
         {
             bool isActionAllowed = loginBL.IsCrossedLImitPerDay((string)Session["userName"]);
-
             if(isActionAllowed == true && (bool)Session["authenticated"] == true)
             {
                 return RedirectToAction("Index", "Department");
@@ -57,7 +52,6 @@ namespace FactoryPrj.Controllers
             {
                 return View("Index");
             }
-
         }
 
         public ActionResult GotoShifts()
@@ -71,7 +65,6 @@ namespace FactoryPrj.Controllers
             {
                 return View("Index");
             }
-
         }
 
         public ActionResult GotoEmployee()
@@ -86,10 +79,11 @@ namespace FactoryPrj.Controllers
             {
                 return View("Index");
             }
-
         }
 
- 
-
-       }
+        public ActionResult BackToHomePage()
+        {
+            return View("HomePage");
+        }
+    }
 }
