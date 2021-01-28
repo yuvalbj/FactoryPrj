@@ -23,7 +23,8 @@
             <form action="/Department/GetUpdatedDep" method="post">
                 Department ID: @Html.EditorFor(m => m.DepID, new { @class = "form-control" })<br />
                 Department Name: @Html.EditorFor(m => m.DepName, new { @class = "form-control  w-25" })<br />
-                Manage Number: @Html.EditorFor(m => m.DepManager, new { @class = "form-control  w-25" })<br />
+                Manager: @Html.DropDownListFor(m => m.DepManager, new SelectList(ViewBag.emps, "empID", "FullName"),
+             "Select Manager", new { @class = "form-control" }) <br/>
                 <input type="submit" class="btn btn-secondary" value="Save" />
 
             </form>

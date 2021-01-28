@@ -24,7 +24,8 @@
 
             <form action="/Department/GetNewDeps" method="post">
                 Department Name: @Html.TextBoxFor(m => m.DepName, new { @class = "form-control w-25" }) <br />
-                Manager Number: @Html.TextBoxFor(m => m.DepManager, new { @class = "form-control  w-25" })<br />
+                Manager: @Html.DropDownListFor(m => m.DepManager, new SelectList(ViewBag.emps, "empID", "FullName"),
+     "Select Manager", new { @class = "form-control" }) <br />
                 <input type="submit" class="btn btn-secondary" value="Add New" />
             </form>
             <br />

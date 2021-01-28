@@ -34,6 +34,8 @@ namespace FactoryPrj.Controllers
             bool isActionAllowed = loginBL.IsCrossedLImitPerDay((string)Session["userName"]);
             if (isActionAllowed == true && (bool)Session["authenticated"] == true)
             {
+                var emps = empBL.getEmpFullName();
+                ViewBag.emps = emps;
                 var dep = depBL.GetDepartment(id);
                 return View("EditDep", dep);
             }
@@ -63,6 +65,8 @@ namespace FactoryPrj.Controllers
             bool isActionAllowed = loginBL.IsCrossedLImitPerDay((string)Session["userName"]);
             if (isActionAllowed == true && (bool)Session["authenticated"] == true)
             {
+                var emps = empBL.getEmpFullName();
+                ViewBag.emps = emps;
                 return View("AddNewDep");
             }
             else

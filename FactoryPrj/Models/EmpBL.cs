@@ -19,7 +19,6 @@ namespace FactoryPrj.Models
                              DepName = dep.DepName,
                              FirstName = emp.FirstName,
                              LastName = emp.LastName
-             
                          };
 
             return result.Where(x => x.DepName.Contains(str) || x.FirstName.Contains(str) || x.LastName.Contains(str)).ToList();
@@ -53,6 +52,7 @@ namespace FactoryPrj.Models
             return db.Employees.ToList();
         }
 
+
         public void UpdateEmp(Employee emp)
         {
             var empToChange = db.Employees.Where(x => x.EmpID == emp.EmpID).First();
@@ -73,6 +73,18 @@ namespace FactoryPrj.Models
                 db.EmployeeShifts.Remove(empshif);
             }
             db.SaveChanges();
+        }
+
+        public object getEmpFullName() 
+        {
+            var result = from emp in db.Employees
+                         select new
+                         {
+                             empID = emp.EmpID,
+                             fullName = emp.FirstName + " " + emp.LastName
+                         };
+            return result.ToList();
+
         }
     }
 }

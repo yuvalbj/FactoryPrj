@@ -14,11 +14,12 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+    <input type="button" class="btn btn-secondary btn-sm" value="Back To Home Page" onclick="location.href='@Url.Action("BackToHomePage", "Login")'" />
+
     <div class="container p-3">
         <h3 class="text-center">Department Page For <em><b>@Session["usrFullName"]</b></em></h3>
     </div>
     <div class="container">
-        <input type="button" class="btn btn-secondary btn-sm" value="Back To Home Page" onclick="location.href='@Url.Action("BackToHomePage", "Login")'" />
 
         <table class="table table-hover table-bordered">
             <thead>
