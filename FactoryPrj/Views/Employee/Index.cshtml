@@ -14,8 +14,9 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+    <input type="button" class="btn btn-secondary btn-sm" value="Back To Home Page" onclick="location.href='@Url.Action("BackToHomePage", "Login")'" />
+
     <div class="container">
-        <input type="button" class="btn btn-secondary btn-sm" value="Back To Home Page" onclick="location.href='@Url.Action("BackToHomePage", "Login")'" />
 
         <h3 class="text-center">Employees Page For <em><b>@Session["usrFullName"]</b></em></h3>
 
@@ -28,7 +29,6 @@
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Start Work Year</th>
@@ -45,62 +45,61 @@
                 @foreach (var emp in ViewBag.emps)
                 {
 
-                <tr>
-                    <td>@emp.EmpID</td>
-                    <td>@emp.FirstName</td>
-                    <td>@emp.LastName</td>
-                    <td>@emp.StartWorkYear</td>
+                    <tr>
+                        <td>@emp.FirstName</td>
+                        <td>@emp.LastName</td>
+                        <td>@emp.StartWorkYear</td>
 
-                    <td>
-                        @foreach (var dep in ViewBag.deps)
-                        {
-
-                            if (dep.DepID == emp.DepID)
+                        <td>
+                            @foreach (var dep in ViewBag.deps)
                             {
-                                @dep.DepName
-                            }
-                            else
-                            { }
 
-                        }
-                    </td>
-
-
-                    <td>
-                        <ul>
-                            @foreach (var item in ViewBag.shifts)
-                            {
-                                if (emp.EmpID == item.EmpID)
+                                if (dep.DepID == emp.DepID)
                                 {
+                                    @dep.DepName
+                                }
+                                else
+                                { }
 
-                                    <li>@item.DateAsString</li>
+                            }
+                        </td>
+
+
+                        <td>
+                            <ul>
+                                @foreach (var item in ViewBag.shifts)
+                                {
+                                    if (emp.EmpID == item.EmpID)
+                                    {
+
+                                        <li>@item.DateAsString</li>
+
+                                    }
 
                                 }
+                            </ul>
+                        </td>
+                        <td>@Html.ActionLink("Edit", "EditEmp", new { id = emp.EmpID, @class = "btn btn-secondary" })</td>
 
-                            }
-                        </ul>
-                    </td>
-                    <td>@Html.ActionLink("Edit", "EditEmp", new { id = emp.EmpID, @class = "btn btn-secondary" })</td>
+                        <td>
+                            @Html.ActionLink("Add Shift", "AddShiftToEmployee", new { id = emp.EmpID, @class = "btn btn-info" })
+                        </td>
 
-                    <td>
-                        @Html.ActionLink("Add Shift", "AddShiftToEmployee", new { id = emp.EmpID, @class = "btn btn-info" })
-                    </td>
-
-                    <td>
-                        @Html.ActionLink("Delete", "DelteEmployee", new { id = emp.EmpID, @class = "btn btn-info" })
-                    </td>
-                </tr>
+                        <td>
+                            @Html.ActionLink("Delete", "DelteEmployee", new { id = emp.EmpID, @class = "btn btn-info" })
+                        </td>
+                    </tr>
                 }
 
             </tbody>
         </table>
-     
+
 
         <input type="button" class="btn btn-secondary btn-sm" value="Log Out" onclick="location.href='@Url.Action("Logout", "Login")'" />
 
     </div>
 
- 
+
 
 
 </body>

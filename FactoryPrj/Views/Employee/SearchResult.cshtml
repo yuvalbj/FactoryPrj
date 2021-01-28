@@ -14,8 +14,9 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+    <input type="button" class="btn btn-secondary btn-sm" value="Back To Home Page" onclick="location.href='@Url.Action("BackToHomePage", "Login")'" />
+
     <div class="container p-3">
-        <input type="button" class="btn btn-secondary btn-sm" value="Back To Home Page" onclick="location.href='@Url.Action("BackToHomePage", "Login")'" />
 
         <h3 class="text-center">Search Result Page For <em><b>@Session["usrFullName"]</b></em></h3>
 

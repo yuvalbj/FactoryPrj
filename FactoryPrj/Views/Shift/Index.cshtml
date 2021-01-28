@@ -14,8 +14,9 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+    <input type="button" class="btn btn-secondary btn-sm" value="Back To Home Page" onclick="location.href='@Url.Action("BackToHomePage", "Login")'" />
+
     <div class="container">
-        <input type="button" class="btn btn-secondary btn-sm" value="Back To Home Page" onclick="location.href='@Url.Action("BackToHomePage", "Login")'" />
 
         <h3 class="text-center">Shiftst Page For <em><b>@Session["usrFullName"]</b></em></h3>
 
@@ -24,7 +25,6 @@
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Shift Date</th>
                     <th scope="col">Shift Hours</th>
                     <th scope="col">Employees in Shift</th>
@@ -37,7 +37,6 @@
                 {
 
                     <tr>
-                        <td>@shift.ShiftID</td>
                         <td>@shift.Date</td>
                         <td>@shift.StartTime - @shift.EndTime</td>
                         <td>
@@ -46,7 +45,7 @@
                                 {
                                     if (emp.shiftID == shift.ShiftID)
                                     {
-                                     <li>@Html.ActionLink((string)emp.empsInShift, "EditEmployee", new { id = (int)emp.EmpID })</li>
+                                        <li>@Html.ActionLink((string)emp.empsInShift, "EditEmployee", new { id = (int)emp.EmpID })</li>
                                     }
 
                                 }

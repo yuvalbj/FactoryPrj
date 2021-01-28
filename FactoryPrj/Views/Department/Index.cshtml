@@ -23,15 +23,13 @@
 
         <table class="table table-hover table-bordered">
             <thead>
-                <tr> <th scope="col">ID</th><th scope="col">Department Name</th><th scope="col">ManagerID</th><th scope="col">Manager</th><th scope="col">Edit</th><th>Delete</th></tr>
+                <tr> <th scope="col">Department Name</th><th scope="col">Manager</th><th scope="col">Edit</th><th>Delete</th></tr>
             </thead>
             <tbody>
                 @foreach (var dep in ViewBag.deps)
                 {
                     <tr>
-                        <td>@dep.DepID</td>
                         <td>@dep.DepName</td>
-                        <td>@dep.DepManager</td>
 
                         <td>
                             @foreach (var emp in ViewBag.emps)
@@ -49,14 +47,11 @@
 
                             }
                         </td>
-
-
-
                         <td>@Html.ActionLink("Edit", "EditDep", new { id = dep.DepID })</td>
                         <td>
                             @if (dep.DepManager == null)
                             {
-                                @Html.ActionLink("Delte", "DeleteDep", new { id = dep.DepID })
+                                @Html.ActionLink("Delete", "DeleteDep", new { id = dep.DepID })
                             }
                         </td>
 

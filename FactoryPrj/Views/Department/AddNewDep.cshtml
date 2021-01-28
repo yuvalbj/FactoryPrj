@@ -18,22 +18,18 @@
     <div class="container p-3">
         <h3 class="text-center">Add New Department Page For <em><b>@Session["usrFullName"]</b></em></h3>
     </div>
-    <div class="container">
-        <div class="offset-lg-4 ">
-
-
-            <form action="/Department/GetNewDeps" method="post">
-                Department Name: @Html.TextBoxFor(m => m.DepName, new { @class = "form-control w-25" }) <br />
-                Manager: @Html.DropDownListFor(m => m.DepManager, new SelectList(ViewBag.emps, "empID", "FullName"),
-     "Select Manager", new { @class = "form-control" }) <br />
-                <input type="submit" class="btn btn-secondary" value="Add New" />
-            </form>
-            <br />
-            @Html.ActionLink("Back to List", "Index")<br />
-            <input type="button" class="btn btn-secondary btn-sm" value="Log Out" onclick="location.href='@Url.Action("Logout","Login")'" />
-        </div>
-
-    </div>
-    
+        <div class="container">
+            <div class="offset-lg-4 ">
+                <form action="/Department/GetNewDeps" method="post">
+                    Department Name: @Html.TextBoxFor(m => m.DepName, new { @class = "form-control w-25" }) <br />
+                    Manager: @Html.DropDownListFor(m => m.DepManager, new SelectList(ViewBag.emps, "empID", "FullName"),
+                              "Select Manager", new { @class = "form-control" }) <br />
+                    <input type="submit" class="btn btn-secondary" value="Add New" />
+                </form>
+                <br />
+                @Html.ActionLink("Back to List", "Index")<br />
+                <input type="button" class="btn btn-secondary btn-sm" value="Log Out" onclick="location.href='@Url.Action("Logout","Login")'" />
+            </div>
+        </div> 
 </body>
 </html>
